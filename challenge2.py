@@ -1,22 +1,17 @@
 import math
+
+PHI = (1 + 5 ** 0.5) / 2
+SQ5 = math.sqrt(5)
 def fibonacci(n):
-    nodes = 0
-    total = 0
-    current = 1 
-    previous = 0 
-    penultimate = 0
-    while(total + current <= n):
-        total += current
-        penultimate = previous
-        previous = current
-        current = penultimate + previous
-        nodes += 1
-    return nodes
+
+    return int(math.floor(math.log(n*SQ5 + 0.5,PHI)) - 1)
+
 def exponential_series(n):
     height = math.log(n + 1,2)
-    height = math.floor(height)
-    return height
+    return int(height)
 
 def answer(total_lambs):
     return fibonacci(total_lambs) - exponential_series(total_lambs)
-answer(20)
+
+# for n in range(1, 99):
+#     print(n, fibonacci(n), exponential_series(n), answer(n))
